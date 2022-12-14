@@ -1,0 +1,53 @@
+---
+title: "Choose the Right T-Test (student)"
+author: "Dr. F.J. Rodenburg"
+date: "9/13/2021"
+output: pdf_document
+---
+
+Save this file and "Day6.Rdata" in the same location. Then, after opening this file, go to **Session** > **Set Working Directory** > **To Source File Location**.
+
+Then run this:
+
+```{r}
+load("Day6.Rdata")
+```
+
+This will load 3 data sets into your working environment. The number after each data set represents the question it belongs to.
+
+The goal is to analyze as many of these data sets as possible:
+
+* Choose the right $t$-test for as many questions as possible. Explain your choice below the respective code chunk;
+* Try to perform diagnostics if applicable;
+* Produce a summary and write a brief conclusion in words, below the code chunk.
+
+Good luck!
+
+---
+
+\clearpage
+
+# Q1
+
+1. A study compares the light intensity emitted from GFP in two different types of mutant zebra fish embryos.
+
+```{r}
+
+```
+
+# Q2
+
+2. A comparison is done between survey responses of men and women. Participants can answer on a 7-point Likert scale, meaning that their answers can be any whole number from 1 (strongly disagree) to 7 (strongly agree). In `DF2` are the outcomes of a particular question.
+
+```{r}
+
+```
+
+# Q3
+
+3. A new antipyretic is being developed. As is common practice in clinical science, the drug is considered 'good enough' if the researchers can demonstrate non-inferiority to an existing alternative. Suppose the new drug (A) and an existing alternative (B) are each given to 30 patients with a fever of $>38^\circ \text{C}$, and the drop in temperature after 30 minutes is measured. Drug A is considered non-inferior to drug B if $\mu_A - \mu_B \leq -0.25 ^\circ \text{C}$.
+
+```{r}
+
+```
+

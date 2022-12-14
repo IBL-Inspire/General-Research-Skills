@@ -1,0 +1,240 @@
+---
+title: "RNAseq tutorial"
+author: "Dr. B. Vriesendorp"
+date: "2/7/2022"
+output: word_document
+---
+
+# Background
+
+An experiment was conducted on human cells (HeLa) to find out the effect of a factor "N" on coagulation. Four levels of "N" were administered to the cells, but for simplicity, we well call these "low" (N5, N7) and "high" (N18, N30). 
+RNAseq generates expression levels of thousands of genes, so through this analysis we will try to narrow it down to the most important differences.
+
+# Getting Started
+ 
+1. Download the data (`counts_cells.csv` and `metadata_genes.csv`) and save both files in the same location as this R markdown file.
+2. Go to **Session** > **Set Working Directory** > **To Source File Location**. R now knows where to locate your data.
+3. Install the required packages and load them as shown in the `install` and `load` chunks.
+
+```{r install, eval = FALSE}
+install.packages(c('ggplot2','plyr','dplyr','mvdalab', 'ggfortify', 'stringr'))
+
+# The last package is not installed from CRAN (the usual place we install from),
+# but from a specialized repository for bioinformatics called Bioconductor:
+install.packages("BiocManager")
+BiocManager::install("DESeq2")
+```
+
+```{r load, include = FALSE}
+library("ggplot2")
+library("plyr") # function join
+library("dplyr")
+library("ggfortify") # function autoplot
+library("mvdalab")
+library("stringr") # function string_extract_all
+library("DESeq2")
+```
+
+# Data Cleaning
+
+4. Load the data and perform the required data cleaning steps:
+
+```{r data, include = FALSE}
+count_data <- read.csv2("counts_cells.csv", header = TRUE, check.names = FALSE)
+annot_data <- read.csv2("metadata_genes.csv", header = TRUE)
+
+vlookup_trans_len   <- data.frame(annot_data[, c(2, 9)])
+vlookup_description <- data.frame(annot_data[, c(2, 8)])
+
+# Edit description, exclude [source ...] for readability.
+# This happens a lot with real data - that you need to clean or edit long names 
+# or strange characters.
+# Here a "regex" (regular expression) is used, where ".+?(?=\\[)" means:
+# Match any characters (".*"), as few as possible ("?"),
+# until a "[ is found "(?=\\[)".
+vlookup_description$description <- str_extract_all(
+  vlookup_description$description, ".+?(?=\\[)"
+)
+
+# Remove empty descriptions
+vlookup_description$description[
+  vlookup_description$description == "character(0)"
+] <- NA
+
+# Replace dots with underscores
+colnames(count_data) <- sub("\\.", "_", colnames(count_data))
+
+# Remove rows with 11 or more zeros
+# Note: This is very conservative filtering! 
+# Normally you want to filter based on additional criteria, e.g. total counts.
+count_data$countzero  <- rowSums(count_data == "0")
+counts_filt           <- count_data[count_data$countzero < 11, ] 
+counts_filt$countzero <- NULL
+# You should now have 18186 rows (originally 27607)
+
+# Normalization, using TPM (Transcripts Per Kilobase Million, see lecture) 
+normal_prep                     <- counts_filt
+normal_prep$ensembl_gene_id     <- normal_prep[, 1]
+normal_counts                   <- join(normal_prep, vlookup_trans_len)
+trans_vector                    <- normal_counts$transcript_length
+normal_counts$ensembl_gene_id   <- NULL
+normal_counts$transcript_length <- NULL
+
+# Normalize for transcript length
+normal_counts[, -1] <- lapply(
+  normal_counts[, -1], 
+  function(x){
+    x / trans_vector
+  }
+)
+
+# For some genes, no transcription length was available. Let's remove those:
+emptyrow      <- apply(normal_counts[, -1], 1, function(x){all(is.na(x))})
+normal_counts <- normal_counts[!emptyrow, ]
+
+# Normalize for sequencing depth
+normal_counts[, -1]  <- lapply(
+  normal_counts[, -1], 
+  function(x){
+    (x * 1000000) / sum(x)
+  }
+)
+```
+
+Several times in this script, `<- NULL` is used on a column. What does this do and why do you think this step is performed?
+
+# Exploratory Analysis
+
+5. You should now have read the data, performed the filtering steps and applied normalization with TPM, transcription length and sequencing length. Next we will use PCA to inspect our normalized data.
+
+```{r PCA, echo = FALSE}
+pca_mat  <- normal_counts[, -1]
+#pca_mat <- counts_filt[, -1]
+pca_mat  <- as.data.frame(t(pca_mat)) 
+cols     <- c("blue", "green", "orange", "red")
+exposure <- rep(cols, each = 3)
+
+PCA        <- prcomp(pca_mat, scale = TRUE)
+scores     <- PCA$x        # The scores
+loadings   <- PCA$rotation # The loadings
+summary(PCA) # cumulative prop. of variance explained per principal component
+var.expl   <- round(summary(PCA)$importance * 100, 1)[2 ,] # var. explained (%)
+
+plot(scores[, 1:2], pch = 19, col = exposure, main = "PCA", # plot the scores
+xlab = paste0("PC1 (", var.expl[1], "% of variance explained)"),
+ylab = paste0("PC2 (", var.expl[2], "%)"))
+legend("topright", legend = c("N5", "N7", "N18", "N30"), col = cols, pch = 19)
+```
+
+6. Run the script above and answer the following questions about the resulting plot:
+    * What do you see in the plot? Does it match your expectations?
+    * If you remove the hastag (`#`) from the second line of the chunk, a PCA will be run on the original data instead (without normalization). Does this change your conclusion? Which results do you think are more useful?
+
+# Formal Analysis
+
+7. Now that we have inspected the data quality, let's run an analysis for the difference between N-low quantity and N-high quantity
+
+```{r DESeq, echo = FALSE}
+## Run EdgeR & DESeq - ideally run both to compare results, now only use DESeq.
+
+# The groups to compare (the conditions).
+# Note: The function DESeqDataSetFromMatrix expects a data.frame as input.
+conds <- data.frame(exposures = rep(c("Nlow", "Nhigh"), each = 6))
+
+# Filtered counts-data before normalization as input
+in_DES      <- as.data.frame(counts_filt, row.names = counts_filt[, 1])
+in_DES[, 1] <- NULL
+DESEQ_MM    <- DESeqDataSetFromMatrix(in_DES, conds, design = ~ exposures)
+
+# Run DESeq
+DESEQ_MM_ES <- estimateSizeFactors(DESEQ_MM)
+sizeFactors(DESEQ_MM_ES)
+DESEQ_MM_ED <- estimateDispersions(DESEQ_MM_ES)
+deseq_test  <- nbinomWaldTest(DESEQ_MM_ED)
+results_DES <- results(deseq_test, pAdjustMethod = "BH")
+```
+
+# Processing the Results
+
+8. Try to create a volcano plot of the results. You can consult the slides from the lecture for an example of what the result should look like.
+
+```{r volcano, echo = FALSE, eval = FALSE}
+# In this chunk, you should try to create a volcano plot by yourself
+# Remember from the lecture, a volcano plot shows:
+#  - The values of  log2(FoldChange) on the x-axis
+#  - The values of -log10(pvalues)   on the y-axis 
+# You can get start by looking at the contents of results_DES:
+results_DES$ # Place your cursor after the $ and press tab to see the contents.
+```
+
+If you have time left, here are some points of consideration for improving your plot:
+
+* `results_DES` has two types of $p$-values. Choose which one you want to display in your volcano plot.
+* Add a line in your plot that represents the threshold for significance.
+* Add lines representing a fold change of 2 or more in either direction
+* (hard) Color the significant genes with a fold change greater than 2, as was shown in the lecture.
+* Customize the plot to your liking.
+
+9. We will now export the results to an Excel file (.csv). They will be stored in your current folder (you can run `getwd()` to see where that is).
+
+```{r out, echo = FALSE}
+# Results sorted (increasing adjusted p-value)
+new_DF <- as.data.frame(results_DES[order(results_DES$padj), ])
+
+# Select a reasonable number of DEGs for further analysis
+nrow(new_DF[(abs(new_DF$log2FoldChange) >= 2 & new_DF$padj < 0.05),]) #316
+nrow(new_DF[(abs(new_DF$log2FoldChange) >= 2 & new_DF$padj < 0.01),]) #221
+
+DEG_select <- (new_DF[(abs(new_DF$log2FoldChange) >= 2 & new_DF$padj < 0.01), ])
+
+# Add annotation to DEG_select:
+DEG_select$ensembl_gene_id <- rownames(DEG_select)
+DEG_select_w_names         <- join(DEG_select, vlookup_description)
+
+# Write the result to Excel (first convert to matrix)
+DEG_mat <- as.matrix(DEG_select_w_names)
+write.csv(DEG_mat, "DEG_select_HighDoseN_vs_LowDoseN.csv")
+```
+
+10. Finally, let's create a heatmap of the correlation between genes (columns) and between samples (rows).
+
+```{r heatmap, echo = FALSE}
+# List to be used as input for e.g. heatmap
+list_sig_genes <- DEG_select$ensembl_gene_id
+
+### lists with top 100 sig genes etc.
+
+# Use in_DES with original counts
+input_HM <- in_DES[list_sig_genes[1:50], ] 
+
+# Adjust rownames to make the names in the heatmap more informative:
+input_HM$ensembl_gene_id <- rownames(input_HM)
+HM_input                 <- join(input_HM, vlookup_description)
+rownames(HM_input)       <- paste(HM_input$ensembl_gene_id, HM_input$description)
+HM_input$description     <- NULL
+HM_input$ensembl_gene_id <- NULL
+
+# 1. Clustering of genes
+hc          <- hclust(dist(HM_input), method = "average")
+clust_genes <- as.dendrogram(hc)
+# Change the margins to fit the names:
+par(mar = c(10, 5, 0.5, 4) + 0.1) # bottom, left, top, right + 0.1 
+plot(clust_genes)
+par(mar = c(5, 5, 4, 3) + 0.1)
+
+# 2. Clustering of samples
+trans_HM_input <- t(HM_input)
+hc             <- hclust(dist(trans_HM_input), method = "average")
+clust_samples  <- as.dendrogram(hc)
+plot(clust_samples)
+
+# 3. Clustering of the original data
+HM_matrix <- as.matrix(HM_input)
+heatmap(HM_matrix, Colv = clust_samples, Rowv = clust_genes)
+```
+
+11. Try to comment on each of the plots: What do you see and what kind of conclusions could be drawn?  
+    * If any of the names do not fit, you can change the margins as shown in `1. CLustering of genes`
+    * If your screen is too small/low resolution, you can export the image to any size you want in PNG or PDF.
+
+12. Try to draw an overall conclusion about the experiment.

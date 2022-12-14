@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Statistical Tests | General Research Skills</title>
+  <meta name="description" content="Chapter 4 Statistical Tests | General Research Skills" />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Statistical Tests | General Research Skills" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Statistical Tests | General Research Skills" />
+  
+  
+  
+
+<meta name="author" content="Dr. F.J. Rodenburg &amp; Dr. H.G.J. van Mil   © 2020–2022 Universiteit Leiden" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="hypothesis-testing.html"/>
+<link rel="next" href="study-design.html"/>
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">General Research Skills</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#previous-cohorts"><i class="fa fa-check"></i>Previous Cohorts</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="installation-tutorial.html"><a href="installation-tutorial.html"><i class="fa fa-check"></i><b>1</b> Installation &amp; Tutorial</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
+<ul>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
+<li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
+<li class="chapter" data-level="1.4" data-path="installation-tutorial.html"><a href="installation-tutorial.html#tutorials"><i class="fa fa-check"></i><b>1.4</b> Tutorials</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#exercise-swirl"><i class="fa fa-check"></i><b>1.4.1</b> Exercise: <code>swirl</code></a></li>
+<li class="chapter" data-level="1.4.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#exercise-learnr-optional"><i class="fa fa-check"></i><b>1.4.2</b> Exercise <code>learnr</code> (optional)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="random-variables.html"><a href="random-variables.html"><i class="fa fa-check"></i><b>2</b> Random Variables</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="random-variables.html"><a href="random-variables.html#what-are-random-variables"><i class="fa fa-check"></i><b>2.1</b> What are Random Variables?</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="random-variables.html"><a href="random-variables.html#exercise"><i class="fa fa-check"></i><b>2.1.1</b> Exercise</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="random-variables.html"><a href="random-variables.html#degrees-of-freedom"><i class="fa fa-check"></i><b>2.2</b> Degrees of Freedom</a>
+<ul>
+<li class="chapter" data-level="2.2.1" data-path="random-variables.html"><a href="random-variables.html#exercises"><i class="fa fa-check"></i><b>2.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="random-variables.html"><a href="random-variables.html#probability-distributions"><i class="fa fa-check"></i><b>2.3</b> Probability Distributions</a>
+<ul>
+<li class="chapter" data-level="2.3.1" data-path="random-variables.html"><a href="random-variables.html#exercises-1"><i class="fa fa-check"></i><b>2.3.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html"><i class="fa fa-check"></i><b>3</b> Hypothesis Testing</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#introduction"><i class="fa fa-check"></i><b>3.1</b> Introduction</a></li>
+<li class="chapter" data-level="3.2" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#statistics-test-statistics-hypothesis-tests"><i class="fa fa-check"></i><b>3.2</b> Statistics, test-statistics &amp; hypothesis tests</a></li>
+<li class="chapter" data-level="3.3" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#one-sample-t-test-step-by-step"><i class="fa fa-check"></i><b>3.3</b> One sample t-test: step by step</a></li>
+<li class="chapter" data-level="3.4" data-path="hypothesis-testing.html"><a href="hypothesis-testing.html#assumptions"><i class="fa fa-check"></i><b>3.4</b> Assumptions</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="statistical-tests.html"><a href="statistical-tests.html"><i class="fa fa-check"></i><b>4</b> Statistical Tests</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="statistical-tests.html"><a href="statistical-tests.html#t-test"><i class="fa fa-check"></i><b>4.1</b> T-Test</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="statistical-tests.html"><a href="statistical-tests.html#choosing-the-right-t-test"><i class="fa fa-check"></i><b>4.1.1</b> Choosing the right <span class="math inline">\(t\)</span>-test</a></li>
+<li class="chapter" data-level="4.1.2" data-path="statistical-tests.html"><a href="statistical-tests.html#exercises-2"><i class="fa fa-check"></i><b>4.1.2</b> Exercises</a></li>
+<li class="chapter" data-level="4.1.3" data-path="statistical-tests.html"><a href="statistical-tests.html#understanding-how-the-t-test-works"><i class="fa fa-check"></i><b>4.1.3</b> Understanding how the <span class="math inline">\(t\)</span>-test works</a></li>
+<li class="chapter" data-level="4.1.4" data-path="statistical-tests.html"><a href="statistical-tests.html#exercises-3"><i class="fa fa-check"></i><b>4.1.4</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="statistical-tests.html"><a href="statistical-tests.html#chi-squared-test"><i class="fa fa-check"></i><b>4.2</b> Chi-Squared Test</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="statistical-tests.html"><a href="statistical-tests.html#lecture"><i class="fa fa-check"></i><b>4.2.1</b> Lecture</a></li>
+<li class="chapter" data-level="4.2.2" data-path="statistical-tests.html"><a href="statistical-tests.html#exercises-4"><i class="fa fa-check"></i><b>4.2.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="statistical-tests.html"><a href="statistical-tests.html#multiple-testing"><i class="fa fa-check"></i><b>4.3</b> Multiple Testing</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="statistical-tests.html"><a href="statistical-tests.html#lecture-1"><i class="fa fa-check"></i><b>4.3.1</b> Lecture</a></li>
+<li class="chapter" data-level="4.3.2" data-path="statistical-tests.html"><a href="statistical-tests.html#exercises-5"><i class="fa fa-check"></i><b>4.3.2</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="study-design.html"><a href="study-design.html"><i class="fa fa-check"></i><b>5</b> Study Design</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="study-design.html"><a href="study-design.html#lecture-2"><i class="fa fa-check"></i><b>5.1</b> Lecture</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="anova.html"><a href="anova.html"><i class="fa fa-check"></i><b>6</b> ANOVA</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="anova.html"><a href="anova.html#overview"><i class="fa fa-check"></i><b>6.1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="" data-path="anova.html"><a href="anova.html#summary-of-the-example-in-the-video"><i class="fa fa-check"></i>Summary of the example in the video</a></li>
+<li class="chapter" data-level="6.1.1" data-path="anova.html"><a href="anova.html#exercises-6"><i class="fa fa-check"></i><b>6.1.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="anova.html"><a href="anova.html#how-does-anova-work"><i class="fa fa-check"></i><b>6.2</b> How does ANOVA work?</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="anova.html"><a href="anova.html#exercises-7"><i class="fa fa-check"></i><b>6.2.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="anova.html"><a href="anova.html#two-way-multi-way-interaction"><i class="fa fa-check"></i><b>6.3</b> Two-Way, Multi-Way &amp; Interaction</a>
+<ul>
+<li class="chapter" data-level="6.3.1" data-path="anova.html"><a href="anova.html#exercises-8"><i class="fa fa-check"></i><b>6.3.1</b> Exercises</a></li>
+<li class="chapter" data-level="6.3.2" data-path="anova.html"><a href="anova.html#additional-exercises"><i class="fa fa-check"></i><b>6.3.2</b> Additional Exercises (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="anova.html"><a href="anova.html#where-is-part-4"><i class="fa fa-check"></i><b>6.4</b> Where is part 4? (*)</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html"><i class="fa fa-check"></i><b>7</b> Simple Linear Regression</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#overview-1"><i class="fa fa-check"></i><b>7.1</b> Overview</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#LMsummary"><i class="fa fa-check"></i><b>7.1.1</b> Summary of the example in the video</a></li>
+<li class="chapter" data-level="7.1.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#exercises-9"><i class="fa fa-check"></i><b>7.1.2</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#step-by-step-walkthrough"><i class="fa fa-check"></i><b>7.2</b> Step-by-Step Walkthrough</a></li>
+<li class="chapter" data-level="7.3" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#model-diagnostics"><i class="fa fa-check"></i><b>7.3</b> Model Diagnostics</a>
+<ul>
+<li class="chapter" data-level="7.3.1" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#exercises-10"><i class="fa fa-check"></i><b>7.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="simple-linear-regression.html"><a href="simple-linear-regression.html#transformation"><i class="fa fa-check"></i><b>7.4</b> Transformation</a></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="factorial-anova.html"><a href="factorial-anova.html"><i class="fa fa-check"></i><b>8</b> Factorial ANOVA</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="factorial-anova.html"><a href="factorial-anova.html#interaction"><i class="fa fa-check"></i><b>8.1</b> Interaction</a></li>
+<li class="chapter" data-level="8.2" data-path="factorial-anova.html"><a href="factorial-anova.html#three-example-factorial-anova-data-sets"><i class="fa fa-check"></i><b>8.2</b> Three example factorial ANOVA data sets</a></li>
+<li class="chapter" data-level="8.3" data-path="factorial-anova.html"><a href="factorial-anova.html#model-specification-and-diagnostics"><i class="fa fa-check"></i><b>8.3</b> Model specification and diagnostics</a></li>
+<li class="chapter" data-level="8.4" data-path="factorial-anova.html"><a href="factorial-anova.html#model-selection"><i class="fa fa-check"></i><b>8.4</b> Model selection</a></li>
+<li class="chapter" data-level="8.5" data-path="factorial-anova.html"><a href="factorial-anova.html#some-final-thoughts-and-visualisation"><i class="fa fa-check"></i><b>8.5</b> Some final thoughts and visualisation</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html"><i class="fa fa-check"></i><b>9</b> ANCOVA &amp; Model Selection</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#introduction-1"><i class="fa fa-check"></i><b>9.1</b> Introduction</a></li>
+<li class="chapter" data-level="9.2" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#the-ancova-explained-by-simulations"><i class="fa fa-check"></i><b>9.2</b> The ANCOVA explained by simulations</a></li>
+<li class="chapter" data-level="9.3" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#the-analysis-of-ancova-data-step-by-step"><i class="fa fa-check"></i><b>9.3</b> The analysis of ANCOVA data step by step</a>
+<ul>
+<li class="chapter" data-level="9.3.1" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#exercises-11"><i class="fa fa-check"></i><b>9.3.1</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#model-selection-1"><i class="fa fa-check"></i><b>9.4</b> Model Selection</a>
+<ul>
+<li class="chapter" data-level="9.4.1" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#exercises-12"><i class="fa fa-check"></i><b>9.4.1</b> Exercises</a></li>
+<li class="chapter" data-level="9.4.2" data-path="ancova-model-selection.html"><a href="ancova-model-selection.html#exercises-hard"><i class="fa fa-check"></i><b>9.4.2</b> Exercises (hard)</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="pca.html"><a href="pca.html"><i class="fa fa-check"></i><b>10</b> PCA</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="pca.html"><a href="pca.html#introduction-2"><i class="fa fa-check"></i><b>10.1</b> Introduction</a></li>
+<li class="chapter" data-level="10.2" data-path="pca.html"><a href="pca.html#motivation-behind-pca"><i class="fa fa-check"></i><b>10.2</b> Motivation behind PCA</a></li>
+<li class="chapter" data-level="10.3" data-path="pca.html"><a href="pca.html#pca-fundamentals"><i class="fa fa-check"></i><b>10.3</b> PCA fundamentals</a></li>
+<li class="chapter" data-level="10.4" data-path="pca.html"><a href="pca.html#pca-in-classification"><i class="fa fa-check"></i><b>10.4</b> PCA in classification</a></li>
+<li class="chapter" data-level="10.5" data-path="pca.html"><a href="pca.html#pca-and-gradients"><i class="fa fa-check"></i><b>10.5</b> PCA and gradients</a>
+<ul>
+<li class="chapter" data-level="10.5.1" data-path="pca.html"><a href="pca.html#exercises-13"><i class="fa fa-check"></i><b>10.5.1</b> Exercises</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="bioinformatics-workshop.html"><a href="bioinformatics-workshop.html"><i class="fa fa-check"></i><b>11</b> Bioinformatics Workshop</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="bioinformatics-workshop.html"><a href="bioinformatics-workshop.html#preparation"><i class="fa fa-check"></i><b>11.1</b> Preparation</a></li>
+<li class="chapter" data-level="11.2" data-path="bioinformatics-workshop.html"><a href="bioinformatics-workshop.html#rnaseq"><i class="fa fa-check"></i><b>11.2</b> RNAseq</a></li>
+<li class="chapter" data-level="11.3" data-path="bioinformatics-workshop.html"><a href="bioinformatics-workshop.html#exercises-14"><i class="fa fa-check"></i><b>11.3</b> Exercises</a></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="glm.html"><a href="glm.html"><i class="fa fa-check"></i><b>12</b> GLM</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="glm.html"><a href="glm.html#preparation-1"><i class="fa fa-check"></i><b>12.1</b> Preparation</a></li>
+<li class="chapter" data-level="12.2" data-path="glm.html"><a href="glm.html#introduction-3"><i class="fa fa-check"></i><b>12.2</b> Introduction</a></li>
+<li class="chapter" data-level="12.3" data-path="glm.html"><a href="glm.html#poisson-glm"><i class="fa fa-check"></i><b>12.3</b> Poisson GLM</a>
+<ul>
+<li class="chapter" data-level="12.3.1" data-path="glm.html"><a href="glm.html#model-specification"><i class="fa fa-check"></i><b>12.3.1</b> Model specification</a></li>
+<li class="chapter" data-level="12.3.2" data-path="glm.html"><a href="glm.html#analysis-of-glm-data-and-interpretation"><i class="fa fa-check"></i><b>12.3.2</b> Analysis of GLM data and interpretation</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="glm.html"><a href="glm.html#binomial-glm"><i class="fa fa-check"></i><b>12.4</b> Binomial GLM</a>
+<ul>
+<li class="chapter" data-level="12.4.1" data-path="glm.html"><a href="glm.html#analysing-a-binomial-glm"><i class="fa fa-check"></i><b>12.4.1</b> Analysing a binomial GLM</a></li>
+<li class="chapter" data-level="12.4.2" data-path="glm.html"><a href="glm.html#interpretation-of-the-estimates"><i class="fa fa-check"></i><b>12.4.2</b> Interpretation of the estimates</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="glm.html"><a href="glm.html#exercises-choose-the-probability-distribution"><i class="fa fa-check"></i><b>12.5</b> Exercises: Choose the Probability Distribution</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">General Research Skills</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="statistical-tests" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Statistical Tests</h1>
+<p><small><i>How do you perform basic comparisons of samples? How do you calculate test statistics, what do they mean, and when is something significant? This chapter covers everything you need to know about basic significance tests for GRS, including the <span class="math inline">\(t\)</span>-test, <span class="math inline">\(\chi^2\)</span>-test, and multiple testing correction.</i></small></p>
+<hr />
+<div id="t-test" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> T-Test</h2>
+<p><small><i>A test for comparing <b>two group means</b>. The data-generating process is assumed to follow a <b>normal distribution</b>, given the group.</i></small></p>
+<div id="choosing-the-right-t-test" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Choosing the right <span class="math inline">\(t\)</span>-test</h3>
+<p>Watch part 1 of the <span class="math inline">\(t\)</span>-test lecture and answer the questions below.</p>
+<iframe src="https://www.youtube.com/embed/qJA3CvFt_pc" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="exercises-2" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Exercises</h3>
+<p><img src="figures/G.species.png" width="100%" /></p>
+<ol style="list-style-type: decimal">
+<li>Suppose you measured the beak dimensions (length, depth) of three <em>Geospiza fortis</em> and three <em>Geospiza scandens</em> finches. Copy the code below to enter the example data into R:</li>
+</ol>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="statistical-tests.html#cb1-1" aria-hidden="true" tabindex="-1"></a>fortis_length   <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">11.00</span>, <span class="fl">10.60</span>, <span class="fl">11.43</span>)</span>
+<span id="cb1-2"><a href="statistical-tests.html#cb1-2" aria-hidden="true" tabindex="-1"></a>fortis_depth    <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">9.70</span>, <span class="fl">9.30</span>, <span class="fl">10.28</span>)</span>
+<span id="cb1-3"><a href="statistical-tests.html#cb1-3" aria-hidden="true" tabindex="-1"></a>scandens_length <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">12.90</span>, <span class="fl">14.20</span>, <span class="fl">14.00</span>)</span>
+<span id="cb1-4"><a href="statistical-tests.html#cb1-4" aria-hidden="true" tabindex="-1"></a>scandens_depth  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">7.90</span>, <span class="fl">9.10</span>, <span class="fl">8.80</span>)</span></code></pre></div>
+<ul>
+<li>Is there a significant difference in mean beak length at <span class="math inline">\(\alpha = 0.05\)</span>? Use an appropriate <span class="math inline">\(t\)</span>-test.</li>
+<li>Is there a significant difference in mean beak depth at <span class="math inline">\(\alpha = 0.05\)</span>? Use an appropriate <span class="math inline">\(t\)</span>-test.</li>
+</ul>
+<ol start="2" style="list-style-type: decimal">
+<li><p>If you use a Wilcoxon test instead of a <span class="math inline">\(t\)</span>-test, how does this affect your conclusion?</p></li>
+<li><p>Suppose you measure three juvenile <em>G. fortis</em> finches, tag them, and then measure them again once they reach adulthood:</p></li>
+</ol>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="statistical-tests.html#cb2-1" aria-hidden="true" tabindex="-1"></a>juvenile_length <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">8.69</span>, <span class="fl">7.69</span>, <span class="fl">8.11</span>)</span>
+<span id="cb2-2"><a href="statistical-tests.html#cb2-2" aria-hidden="true" tabindex="-1"></a>juvenile_depth  <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">9.44</span>, <span class="fl">7.22</span>, <span class="fl">8.38</span>)</span>
+<span id="cb2-3"><a href="statistical-tests.html#cb2-3" aria-hidden="true" tabindex="-1"></a>adult_length    <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">11.50</span>, <span class="fl">9.70</span>, <span class="fl">10.40</span>)</span>
+<span id="cb2-4"><a href="statistical-tests.html#cb2-4" aria-hidden="true" tabindex="-1"></a>adult_depth     <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fl">9.50</span>, <span class="fl">8.00</span>, <span class="fl">8.80</span>)</span></code></pre></div>
+<ul>
+<li>Is there a significant difference in mean beak length at <span class="math inline">\(\alpha = 0.05\)</span>? Use an appropriate <span class="math inline">\(t\)</span>-test.</li>
+<li>Is there a significant difference in mean beak depth at <span class="math inline">\(\alpha = 0.05\)</span>? Use an appropriate <span class="math inline">\(t\)</span>-test.</li>
+</ul>
+</div>
+<div id="understanding-how-the-t-test-works" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Understanding how the <span class="math inline">\(t\)</span>-test works</h3>
+<p>Watch part 2 of the <span class="math inline">\(t\)</span>-test lecture and answer the questions below.</p>
+<iframe src="https://www.youtube.com/embed/clOcUNR_ayQ" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="exercises-3" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Exercises</h3>
+<p>Interpreting output is an important part of the exam. The questions on the exam will usually be no harder than this, so if you get these right, your understanding of the subject matter is sufficient.<br />
+<small><em>(If you want to review specific parts of the video, there are chapters if you watch it in <a href="https://youtu.be/clOcUNR_ayQ">a separate window</a>.)</em> </small></p>
+<ol style="list-style-type: decimal">
+<li>Below is the (partial) output of a <span class="math inline">\(t\)</span>-test. What kind of <span class="math inline">\(t\)</span>-test is this?</li>
+</ol>
+<pre><code>t = -1.8608, df = 17.776, p-value = 0.07939
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -3.3654832  0.2054832
+sample estimates:
+mean in group 1 mean in group 2 
+           0.75            2.33 </code></pre>
+<ol start="2" style="list-style-type: decimal">
+<li><p>Use the output shown above to determine what the standard error (<span class="math inline">\(\text{SE}\)</span>) was.</p></li>
+<li><p>Below is the output of another <span class="math inline">\(t\)</span>-test on the same data. What kind of <span class="math inline">\(t\)</span>-test was used here?</p></li>
+</ol>
+<pre><code>t = -1.8608, df = 17.776, p-value = 0.0397
+alternative hypothesis: true difference in means is less than 0
+95 percent confidence interval:
+       -Inf -0.1066185
+sample estimates:
+mean in group 1 mean in group 2 
+           0.75            2.33</code></pre>
+<ol start="4" style="list-style-type: decimal">
+<li><p>Compare the <span class="math inline">\(p\)</span>-value of the first and second <span class="math inline">\(t\)</span>-test. What do you notice?</p></li>
+<li><p>What was the total sample size of the data used in the <span class="math inline">\(t\)</span>-test below?</p></li>
+</ol>
+<pre><code>t = -4.9005, df = 38, p-value = 1.811e-05
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -8.994387 -3.735613
+sample estimates:
+mean in group 1 mean in group 2 
+         19.735          26.100 </code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li><p>(hard) Using your answer from (5) and the output, can you calculate the standard deviation (<span class="math inline">\(s\)</span>)? You may assume equal sample sizes. <small><em>(If you get stuck, have a look <a href="https://en.wikipedia.org/wiki/Student%27s_t-test#Equal_sample_sizes_and_variance">here</a>.)</em></small></p></li>
+<li><p>(hard) A set of extra exercises can be downloaded <a href="exercises/T-Test/ChooseTheRightT-Test_student.Rmd">here</a> and its required data sets <a href="exercises/T-Test/Day6.Rdata">here</a>. <br><small><em>(If you can’t knit, click <a href="exercises/T-Test/ChooseTheRightT-Test_student.pdf">here</a> for a PDF version of the exercises.)</em></small></p></li>
+</ol>
+<hr />
+</div>
+</div>
+<div id="chi-squared-test" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Chi-Squared Test</h2>
+<p><small><i>A test for comparing observed to expected <b>frequencies</b> (counts). Can also be used for contingency tables.</i></small></p>
+<div id="lecture" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Lecture</h3>
+<p>Watch the lecture on the <span class="math inline">\(\chi^2\)</span>-test and answer the questions below.</p>
+<iframe src="https://www.youtube.com/embed/PDl7mhpY4PI" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="exercises-4" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li><p>Suppose a vaccine is reported to prevent <span class="math inline">\(95\%\)</span> of virus infections in healthy adults. The vaccine is given to <span class="math inline">\(1000\)</span> healthy adults, all of which are expected to be exposed to the virus. If <span class="math inline">\(63\)</span> individuals end up being infected, is there a significant deviation from the reported effectiveness at <span class="math inline">\(\alpha = 0.05\)</span>?</p></li>
+<li><p>Below is a <span class="math inline">\(2 \times 2\)</span> contingency table:</p></li>
+</ol>
+<table class="table" style="width: auto !important; margin-left: auto; margin-right: auto;">
+<thead>
+<tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:right;">
+male
+</th>
+<th style="text-align:right;">
+female
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+left-handed
+</td>
+<td style="text-align:right;">
+59
+</td>
+<td style="text-align:right;">
+455
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+right-handed
+</td>
+<td style="text-align:right;">
+40
+</td>
+<td style="text-align:right;">
+479
+</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>With <span class="math inline">\(\alpha = 0.05\)</span>, is there a difference in the <span class="math inline">\(\text{male}:\text{female}\)</span> ratio of left and right-handed individuals?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>For larger contingency tables, a <span class="math inline">\(p\)</span>-value alone does not quite paint the picture of what is going on. This is why there have been quite a few attempts to make visual summaries of categorical data. One such example is a mosaic plot. The code below generates a mosaic plot for the hair and eye color frequencies of <span class="math inline">\(592\)</span> individuals.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> Copy the code to R and run it. Can you tell which combinations are less common in females than in males?</li>
+</ol>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="statistical-tests.html#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mosaicplot</span>(HairEyeColor)</span></code></pre></div>
+<hr />
+</div>
+</div>
+<div id="multiple-testing" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Multiple Testing</h2>
+<p><small><i>If a study involves testing more than one hypothesis, then there is an increased chance of a false positive.</i></small></p>
+<div id="lecture-1" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Lecture</h3>
+<p>Watch the lecture on multiple testing and answer the questions below.</p>
+<iframe src="https://www.youtube.com/embed/RUX94txw4Qo" width="672" height="400px" data-external="1">
+</iframe>
+</div>
+<div id="exercises-5" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Exercises</h3>
+<ol style="list-style-type: decimal">
+<li>Suppose a paper compares <span class="math inline">\(10\)</span> different diets with paired <span class="math inline">\(t\)</span>-tests (before and after), to find out which diets result in a significant reduction in fat mass. If a level of significance <span class="math inline">\(\alpha = 0.05\)</span> is used and no multiple testing correction is applied, what is the chance of at least one false positive?</li>
+<li>Suppose the results of the paper described in the previous question are the ten <span class="math inline">\(p\)</span>-values shown below.
+Copy the code to your R markdown file and answer the following questions:</li>
+</ol>
+<p><small></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="statistical-tests.html#cb7-1" aria-hidden="true" tabindex="-1"></a>pvalues <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">diet 1</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.06936</span>, </span>
+<span id="cb7-2"><a href="statistical-tests.html#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 2</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.81778</span>, </span>
+<span id="cb7-3"><a href="statistical-tests.html#cb7-3" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 3</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.94262</span>, </span>
+<span id="cb7-4"><a href="statistical-tests.html#cb7-4" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 4</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.26938</span>, </span>
+<span id="cb7-5"><a href="statistical-tests.html#cb7-5" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 5</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.16935</span>, </span>
+<span id="cb7-6"><a href="statistical-tests.html#cb7-6" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 6</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.03390</span>, </span>
+<span id="cb7-7"><a href="statistical-tests.html#cb7-7" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 7</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.17879</span>, </span>
+<span id="cb7-8"><a href="statistical-tests.html#cb7-8" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 8</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.64167</span>, </span>
+<span id="cb7-9"><a href="statistical-tests.html#cb7-9" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 9</span><span class="st">`</span>  <span class="ot">=</span> <span class="fl">0.02288</span>, </span>
+<span id="cb7-10"><a href="statistical-tests.html#cb7-10" aria-hidden="true" tabindex="-1"></a>             <span class="st">`</span><span class="at">diet 10</span><span class="st">`</span> <span class="ot">=</span> <span class="fl">0.00832</span>)</span></code></pre></div>
+<p></small></p>
+<ul>
+<li>Which diets have a significant effect after Bonferroni correction?</li>
+<li>Which diets have a significant effect after FDR correction?</li>
+<li>Why are some <span class="math inline">\(p\)</span>-values equal to <span class="math inline">\(1\)</span> after correction?</li>
+</ul>
+<ol start="3" style="list-style-type: decimal">
+<li>There have been many criticisms of the over-reliance of scientific papers on <span class="math inline">\(p\)</span>-values. This is in part because there are many incorrect interpretations being used in papers, and in part because problems like multiple testing, stopping rules and stepwise regression are often left unaddressed. This is one of the major reasons for the ongoing <a href="https://en.wikipedia.org/wiki/Replication_crisis">reproducibility crisis</a>.</li>
+</ol>
+<ul>
+<li>Which of the following interpretations are <b>incorrect</b>? The <span class="math inline">\(p\)</span>-value is:
+<ul>
+<li>The chance of a false positive;</li>
+<li>The chance that the null-hypothesis is false;</li>
+<li>The chance that the null-hypothesis is correct;</li>
+<li>The chance that the alternative hypothesis is false;</li>
+<li><span class="math inline">\(1\)</span> minus the chance that the alternative hypothesis is correct;</li>
+<li>The probability that the results arose by chance;</li>
+<li>The chance that the test statistic is this large, or larger, if the null-hypothesis were correct;</li>
+<li>If the null-hypothesis were true, and the experiment were repeated a large number of times, then the <span class="math inline">\(p\)</span>-value is the expected proportion of experiments with this larger, or larger a test statistic.</li>
+</ul></li>
+<li>A solution to the reproducibility crisis proposed by some groups is to lower the commonly used standard of <span class="math inline">\(\alpha = 0.05\)</span> to some lower value, like <span class="math inline">\(\alpha = 0.005\)</span>. Why is this solution problematic?</li>
+<li>What would be a better solution?</li>
+</ul>
+<ol start="4" style="list-style-type: decimal">
+<li>Below is a comic from <a href="https://xkcd.com/">xkcd.com</a>. What is meant by this comic?</li>
+</ol>
+<p><img src="https://imgs.xkcd.com/comics/significant.png" /><!-- --></p>
+
+</div>
+</div>
+</div>
+<div class="footnotes">
+<hr />
+<ol start="1">
+<li id="fn1"><p><small>Snee, R. D. (1974): Graphical display of two-way contingency tables. <em>The American Statistician</em>, <b>28</b>, 9–12. doi: <a href="https://doi.org/10.2307/2683520">10.2307/2683520</a>.</small><a href="statistical-tests.html#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="hypothesis-testing.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="study-design.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["General Research Skills.pdf", "General Research Skills.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

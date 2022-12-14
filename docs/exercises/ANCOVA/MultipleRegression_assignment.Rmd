@@ -1,0 +1,267 @@
+---
+title: "Multiple Regression Assignment"
+author: "Dr. F.J. Rodenburg"
+date: "9/19/2021"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+# Exercise 1 (example model)
+
+The code below fits two ANCOVA models to the `iris` data set:
+
+* One <b>with</b> interaction
+* One <b>without</b> interaction
+
+```{r model}
+ANCOVA_with    <- lm(Sepal.Width ~ Petal.Width * Species, data = iris)
+ANCOVA_without <- lm(Sepal.Width ~ Petal.Width + Species, data = iris)
+```
+
+Here is a simple plot of the data:
+
+```{r visualsummary}
+plot(Sepal.Width ~ Petal.Width, data = iris, col = Species)
+```
+
+**Question**:
+
+* Based on this plot, would you expect an interaction or not? Explain.
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+* Can you change the code to produce a nicer looking plot?
+
+**Answer**:
+
+```{r}
+
+```
+
+
+## Diagnostics
+
+The code below performs visual diagnostics for the model with interaction. If you have trouble installing the package `car`, change `FALSE` to `TRUE` in the first line. *(You can install `car` with `install.packages("car")`.)*
+
+```{r diagnostics}
+problemsinstallingcar <- FALSE
+
+par(mfrow = c(2, 2))
+plot(ANCOVA_with, which = 1)
+if(problemsinstallingcar){
+  plot(ANCOVA_with, which = 2)
+} else{
+  car::qqPlot(ANCOVA_with)
+}
+plot(ANCOVA_with, which = 3)
+plot(ANCOVA_with, which = 5)
+par(mfrow = c(1, 1))
+```
+
+In case of an error about **figure margins**, try increasing the size of the lower left pane in RStudio.
+
+**Question**:
+
+* How do the diagnostic plots look? Is there any cause for concern?
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+* Perform the same diagnostics for the model without interaction. Adjust the code above as necessary.
+
+**Answer**:
+
+```{r diagnostics2}
+
+```
+
+**Question**:
+
+* How do the diagnostic plots look? Do you prefer either model based on the diagnostic plots?
+
+**Answer**:
+
+* ...
+
+## Model Selection
+
+To help choose one of these models, let's perform a goodness-of-fit test:
+
+```{r Ftest}
+anova(ANCOVA_without, ANCOVA_with)
+```
+
+**Question**:
+
+* Using $\alpha = 0.05$, what do you conclude about this test?
+
+**Answer**:
+
+* ...
+
+Below are the R-squared and adjusted R-squared of both models:
+
+```{r rsquared}
+summary(ANCOVA_without)$r.squared
+summary(ANCOVA_with)$r.squared
+```
+
+```{r adjrsquared}
+summary(ANCOVA_without)$adj.r.squared
+summary(ANCOVA_with)$adj.r.squared
+```
+
+**Question**:
+
+* How much of the total variance in `Sepal.Width` is explained by each model? 
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+* Which model explains more variance with respect to the model complexity? What number do you use for this?
+
+**Answer**:
+
+* ...
+
+The code below compares the Akaike and Bayesian information criterion of both models:
+
+```{r}
+AIC(ANCOVA_without, ANCOVA_with)
+BIC(ANCOVA_without, ANCOVA_with)
+```
+
+**Question**:
+
+* Which model is better according to AIC and BIC? Do AIC and BIC agree? 
+* What does "better" mean if we choose a model based on these measures?
+
+**Answer**:
+
+* ...
+
+## Summary
+
+Below is the coefficients tab of the model with and without interaction:
+
+```{r}
+summary(ANCOVA_without)$coefficients
+summary(ANCOVA_with)$coefficients
+```
+
+**Question**:
+
+* In the previous question, you chose a "best" model. Look at the coefficients tab of this model and comment on the estimates and their uncertainty.
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+* If you want to compare *versicolor* to *virginica*, how could you do that? Perform this comparison below:
+
+**Answer**:
+
+```{r}
+
+```
+
+# Exercise 2 (fit a model yourself)
+
+Install the package `faraway` and run the code below:
+
+```{r}
+library("faraway") # install if missing!
+plot(longevity ~ thorax, data = fruitfly, col = activity)
+```
+
+In case of installation problems, I have included the data in the ZIP folder of the assignment. To read it, go to **Session** -> **Set Working Directory** -> **To Source File Location** and replace the code above by: `fruitfly <- read.csv("fruitfly.csv")`. Note that this will only work if you unzipped the contents of the folder.
+
+Fit an ANCOVA with `longevity` as the outcome variable:
+
+```{r}
+# Fit a model of the form:
+# ANCOVA <- lm(... ~ ... + ..., data = ...)
+# Or:
+# ANCOVA <- lm(... ~ ... * ..., data = ...)
+```
+
+Then inspect the diagnostic plots (you can copy the code from the previous exercise).
+
+```{r}
+
+```
+
+**Question**:
+
+* How do the diagnostic plots look? Is there any cause for concern?
+
+**Answer**:
+
+* ...
+
+The code below performs Box-Cox transformation suggestion for the response variable:
+
+```{r, eval = FALSE}
+require("MASS") # This library contains the function boxcox()
+boxcox(ANCOVA)
+```
+
+**Question**:
+
+* What does the plot suggest? If you don't remember how to interpret a Box-Cox plot, see ***2.4.2** of [Elements of Biostatistics](https://github.com/FransRodenburg/Biostatistics-Book-Series/blob/main/Elements_of_Biostatistics_Sep2020.pdf)
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+Independent of the Box-Cox plot, you can still suggest a transformation of `longevity` based on theory. Can you think of a logical choice for a transformation? What would you suggest? (Also explained in ***2.4.2***)
+
+**Answer**:
+
+* ...
+
+**Question**:
+
+* Use the transformation you chose and save the model into an object with a new name. 
+* Conduct diagnostics on this new model. Do the plots look better than before transformation?
+
+**Answer**:
+
+```{r}
+
+```
+
+* ...
+
+**Question**:
+
+* Run a `summary` of the model you chose and write a conclusion of a few sentences, using all of the output you understand from the summary.
+
+**Answer**:
+
+```{r}
+
+```
+
+**Question** (hard):
+
+* Create a plot of your model and the actual observations. As an extra challenge, you can try to plot a confidence, or prediction interval around the model. If you do, explain which one is shown, and how to interpret it.
+
+```{r}
+
+```

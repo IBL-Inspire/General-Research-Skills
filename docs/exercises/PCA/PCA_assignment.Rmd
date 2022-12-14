@@ -1,0 +1,78 @@
+---
+title: "PCA: Exploratory Data Analysis"
+author: "Dr. H.G.J. van Mil (revision by Dr. F.J. Rodenburg)"
+date: "September 2021"
+output: pdf_document
+---
+
+Save this file and "Day15.Rdata" in the same location. Then, after opening this file, go to **Session** > **Set Working Directory** > **To Source File Location**.
+
+Then run this:
+
+```{r}
+load("Day15.Rdata")
+```
+
+Use the presentation or the book to perform PCA on the data sets below (a complete example PCA analysis in R is shown in ***Elements of Biostatistics***, ***4.4***). Try to comment on the proportion of the variance captured by the first PCs, any clusters you might see, effects that seems to relate to certain groups, and try to improve the biplot with colors and/or symbols.
+
+## Protein sources in different nations
+
+Description: These data measure protein consumption in twenty-five European countries for nine food groups. It is possible to use multivariate methods to determine whether there are groupings of countries and whether meat consumption is related to that of other foods.
+
+Number of cases: $n = 25$  
+Variable names:  
+
+* `Country`: Country name 
+* `RdMeat`: Red meat
+* `WhMeat`: White meat 
+* `Eggs`: Eggs
+* `Milk`: Milk 
+* `Fish`: Fish 
+* `Cereal`: Cereal 
+* `Starch`: Starchy foods 
+* `Nuts`: Pulses, nuts, and oil-seeds 
+* `Fr&Veg`: Fruits and vegetables.
+
+Can you interpret the results of this PCA analysis? Do certain countries cluster together and why?
+
+```{r}
+summary(Protein)
+```
+
+
+## Morphological features of flea species
+
+This data is from a paper by A. A. Lubischew, "On the Use of Discriminant Functions in Taxonomy", Biometrics, Dec 1962, pp.455--477.
+
+The flea data set consist of 6 morphological features and the species:
+
+* `tars1`, width of the first joint of the first tarsus in microns (the sum of measurements for both tarsi)
+* `tars2`, the same for the second joint
+* `head`, the maximal width of the head between the external edges of the eyes in 0.01 mm
+* `ade1`, the maximal width of the aedeagus in the fore-part in microns
+* `ade2`, the front angle of the aedeagus ( 1 unit = 7.5 degrees)
+* `ade3`, the aedeagus width from the side in microns
+* `species`, which species is being examined - concinna, heptapotamica, heikertingeri
+
+Hypothesis about the data structure you find with PCA.
+
+```{r}
+summary(Flea)
+```
+
+## Fatty acid contents in olives from different regions
+
+This data is from a paper by Forina, Armanino, Lanteri, Tiscornia (1983) Classification of Olive
+Oils from their Fatty Acid Composition, in Martens and Russwurm (ed) Food Research and Data
+Anlysis. 
+
+* `region` Three super-classes of Italy: North, South and the island of Sardinia
+* `area` Nine collection areas: three from North, four from South and 2 from Sardinia
+* `palmitic`, `palmitoleic`, `stearic`, `oleic`, `linoleic`, `linolenic`, `arachidic`, `eicosenoic` fatty acids percent
+($\times 100$)
+
+Form a hypothesis about the data structure you find with PCA, that could be studied with further research.
+
+```{r}
+summary(Olive)
+```
