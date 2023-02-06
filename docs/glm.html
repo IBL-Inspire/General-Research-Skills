@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 12 GLM | General Research Skills</title>
   <meta name="description" content="Chapter 12 GLM | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 12 GLM | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="bioinformatics-workshop.html"/>
 
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,13 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+<script src="libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+<link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
+<script src="libs/bsTable-3.3.7/bootstrapTable.js"></script>
 
 
 <style type="text/css">
@@ -92,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -105,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -144,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -305,12 +307,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="glm" class="section level1" number="12">
-<h1><span class="header-section-number">Chapter 12</span> GLM</h1>
+<div id="glm" class="section level1 hasAnchor" number="12">
+<h1><span class="header-section-number">Chapter 12</span> GLM<a href="glm.html#glm" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><small><i>A model for a <b>response variable</b> and <b>any number of explanatory variables</b> (continuous and/or categorical). The data-generating process can follow <b>any distribution in the exponential dispersion family</b>.</i></small></p>
 <hr />
-<div id="preparation-1" class="section level2" number="12.1">
-<h2><span class="header-section-number">12.1</span> Preparation</h2>
+<div id="preparation-1" class="section level2 hasAnchor" number="12.1">
+<h2><span class="header-section-number">12.1</span> Preparation<a href="glm.html#preparation-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>To properly understand the generalized linear model, you should by now be familiar with:</p>
 <ul>
 <li><a href="https://youtu.be/jdfG7rKPVNk">Probability distributions</a>;</li>
@@ -319,16 +321,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>If you want to prepare for this chapter before the lectures on GLM, I recommend revisiting those subjects.</p>
 </div>
-<div id="introduction-3" class="section level2" number="12.2">
-<h2><span class="header-section-number">12.2</span> Introduction</h2>
+<div id="introduction-3" class="section level2 hasAnchor" number="12.2">
+<h2><span class="header-section-number">12.2</span> Introduction<a href="glm.html#introduction-3" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Data do not always abide to the assumptions of our statistical models. This might be due to extreme values in our data, which might be outliers, or due to bad experimentation. But there are also many instances where the deviation from the assumptions are due to more data fundamental properties. We have observed this in the <code>fruitfly</code> and <code>rats</code> data sets. Longevity and survival can be interpreted as the time we need to wait until the fruit flies or rats dies. Most often waiting times are not distributed as a normal distribution. Counting processes also result in non-normal distributions (Poisson).</p>
 <p>The same is true if our response variable is not numeric but for instance a factor with two levels; e.g. the present or absence of a particular object, success or failure, dead or alive, sprouting or not, gene on or off, to name a few. These two-valued response data are called binomial data and the related distribution is the binomial distribution.</p>
 <p>Waiting times, counts and binomial data occur commonly in life science research. In order to accommodate for the analysis of these data, we need to generalize the linear model in such a way that will allow for the statistical analysis of Poisson and binomial data and keeps the ease of interpretation of the linear models. The method that was developed is called the generalized linear model, or GLM.</p>
 <p>Below we will discuss two instances of GLMs, one for Poisson and one for binomial data. Beside a small addition in the coding, the GLM transforms the model rather that the response variable, this will allow us to give a standard interpretation to intercepts and in particular the slopes.</p>
 <p>GLM is also discussed in chapter 3 of the book <a href="https://github.com/FransRodenburg/Biostatistics-Book-Series/blob/main/Elements_of_Biostatistics_Sep2020.pdf">Elements of Biostatistics</a>.</p>
 </div>
-<div id="poisson-glm" class="section level2" number="12.3">
-<h2><span class="header-section-number">12.3</span> Poisson GLM</h2>
+<div id="poisson-glm" class="section level2 hasAnchor" number="12.3">
+<h2><span class="header-section-number">12.3</span> Poisson GLM<a href="glm.html#poisson-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this first screencast we give the motivation for choosing a GLM approach to Poisson data. I also discuss the link between the different distributions. It turns out that the three distributions normal, Poisson, and binomial, all belong to the same family of distribution, the exponential dispersion family. It’s important to note that both the Poisson and binomial distributions have only one free parameter: <span class="math inline">\(\lambda\)</span> and <span class="math inline">\(p\)</span>, respectively, whereas the normal distribution has two: <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>.</p>
 <iframe src="https://www.youtube.com/embed/6fH8Ysw3_Nk" width="672" height="400px" data-external="1">
 </iframe>
@@ -336,8 +338,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>How are distribution parameters of the normal distribution, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma\)</span>, related to the parameter of the Poisson distribution <span class="math inline">\(\lambda\)</span> and the parameters of the binomial distribution, <span class="math inline">\(p\)</span> and <span class="math inline">\(n\)</span>?</li>
 </ul>
-<div id="model-specification" class="section level3" number="12.3.1">
-<h3><span class="header-section-number">12.3.1</span> Model specification</h3>
+<div id="model-specification" class="section level3 hasAnchor" number="12.3.1">
+<h3><span class="header-section-number">12.3.1</span> Model specification<a href="glm.html#model-specification" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Because GLM models can deal with the different distributions from the exponential family, we need to make explicit which family member we need to select, e.g. Poisson for counts and binomial for two level factors. One example for a GLM encoded in R:</p>
 <pre><code>Model &lt;- glm(Counts ~ Treatment + Concentration + treat:Concentration, family = poisson(link = &quot;log&quot;)</code></pre>
 <p>Note that you can identify:</p>
@@ -354,8 +356,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Name three link function for the Poisson distribution.</li>
 </ul>
 </div>
-<div id="analysis-of-glm-data-and-interpretation" class="section level3" number="12.3.2">
-<h3><span class="header-section-number">12.3.2</span> Analysis of GLM data and interpretation</h3>
+<div id="analysis-of-glm-data-and-interpretation" class="section level3 hasAnchor" number="12.3.2">
+<h3><span class="header-section-number">12.3.2</span> Analysis of GLM data and interpretation<a href="glm.html#analysis-of-glm-data-and-interpretation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the GLM we transform the model in order to to get the residuals to behave as a normal distribution again. The assumption of homoscedasticity is not relevant for GLM, as heteroscedasticity is a property of the Poisson distribution. Other than that, the steps are mostly the same as with the linear models you have seen before.</p>
 <p>To understand the estimate of the slope in a Poisson GLM we need to transform it back, e.g. from <code>log</code> (which is the natural logarithm in R) using the exponential function. This introduces a nonlinear behavior, a curve, and the slope now becomes the rate of the change of the tangent line to the curve.</p>
 <iframe src="https://www.youtube.com/embed/imXXa34yu6U" width="672" height="400px" data-external="1">
@@ -367,8 +369,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 </div>
 </div>
-<div id="binomial-glm" class="section level2" number="12.4">
-<h2><span class="header-section-number">12.4</span> Binomial GLM</h2>
+<div id="binomial-glm" class="section level2 hasAnchor" number="12.4">
+<h2><span class="header-section-number">12.4</span> Binomial GLM<a href="glm.html#binomial-glm" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We use the a binomial GLM if our response data consist of two level factor. It follow the same steps as the binomial GLM, however the intercepts and slopes are interpreted differently. In this first screencast we discuss the motivation behind using the binomial GLM.</p>
 <iframe src="https://www.youtube.com/embed/fd3vB5670Po" width="672" height="400px" data-external="1">
 </iframe>
@@ -376,8 +378,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li>What is the main motivation to use binomial GLM?</li>
 </ul>
-<div id="analysing-a-binomial-glm" class="section level3" number="12.4.1">
-<h3><span class="header-section-number">12.4.1</span> Analysing a binomial GLM</h3>
+<div id="analysing-a-binomial-glm" class="section level3 hasAnchor" number="12.4.1">
+<h3><span class="header-section-number">12.4.1</span> Analysing a binomial GLM<a href="glm.html#analysing-a-binomial-glm" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In analyzing GLM data we use the same steps as before. However, it become difficult to perform good model diagnostics, either due to the small number of observation because the number of success is reduced to one number or as the two-value nature of the response variable, as will be explained below.</p>
 <iframe src="https://www.youtube.com/embed/hGJG2C_aLGk" width="672" height="400px" data-external="1">
 </iframe>
@@ -386,8 +388,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>If you prepare and experiment for the analysis with a binomial experiment, in what range of the numerical response variable should you have enough data?</li>
 </ul>
 </div>
-<div id="interpretation-of-the-estimates" class="section level3" number="12.4.2">
-<h3><span class="header-section-number">12.4.2</span> Interpretation of the estimates</h3>
+<div id="interpretation-of-the-estimates" class="section level3 hasAnchor" number="12.4.2">
+<h3><span class="header-section-number">12.4.2</span> Interpretation of the estimates<a href="glm.html#interpretation-of-the-estimates" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>The interpretation of slopes and intercepts are different as compared to the Poisson GLM. Now the response is interpreted as the probability of success and intercepts and slopes are related to odd ratios or risks</p>
 <iframe src="https://www.youtube.com/embed/opEaRTJxZXw" width="672" height="400px" data-external="1">
 </iframe>
@@ -397,13 +399,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 </div>
 </div>
-<div id="exercises-choose-the-probability-distribution" class="section level2" number="12.5">
-<h2><span class="header-section-number">12.5</span> Exercises: Choose the Probability Distribution</h2>
+<div id="exercises-choose-the-probability-distribution" class="section level2 hasAnchor" number="12.5">
+<h2><span class="header-section-number">12.5</span> Exercises: Choose the Probability Distribution<a href="glm.html#exercises-choose-the-probability-distribution" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>A set of exercises can be downloaded <a href="exercises/GLM/ChooseTheProbabilityDistribution.Rmd">here</a> and its required data sets <a href="exercises/GLM/Day12.Rdata">here</a>. <br><small><em>(If you can’t knit, click <a href="exercises/GLM/ChooseTheProbabilityDistribution.pdf">here</a> for a PDF version of the exercises.)</em></small></p>
 <hr />
 
 </div>
 </div>
+
+
+
+
+
+
+
+
+
             </section>
 
           </div>
@@ -471,7 +482,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

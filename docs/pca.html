@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 10 PCA | General Research Skills</title>
   <meta name="description" content="Chapter 10 PCA | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 10 PCA | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="ancova-model-selection.html"/>
 <link rel="next" href="bioinformatics-workshop.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -148,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -309,12 +307,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pca" class="section level1" number="10">
-<h1><span class="header-section-number">Chapter 10</span> PCA</h1>
+<div id="pca" class="section level1 hasAnchor" number="10">
+<h1><span class="header-section-number">Chapter 10</span> PCA<a href="pca.html#pca" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><small><i>An <b>exploratory technique</b> for explaining the variance among a group of continuous variables, by creating linear combinations.</i></small></p>
 <hr />
-<div id="introduction-2" class="section level2" number="10.1">
-<h2><span class="header-section-number">10.1</span> Introduction</h2>
+<div id="introduction-2" class="section level2 hasAnchor" number="10.1">
+<h2><span class="header-section-number">10.1</span> Introduction<a href="pca.html#introduction-2" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Principal Component Analysis, or PCA in short, is a dimension reduction method or unsupervised machine learning method in modern statistical language. PCA is an exploratory method and need to be contrasted with conformational method’s like the methods discussed in the previous two weeks, and prediction methods, that are not discussed in this course. Exploratory methods are used when there is no clear enough understanding of our system of interest to generate an meaningful hypothesis; a hypothesis for conformational statistics. One example is the measurement of many morphological or genetic features of different Species within a genus. The dataset is than explored to identify those features that that can be used to classify or reltaed species to each other.</p>
 <p>Now imagine a spreadsheet with individual subjects as rows and features or properties as columns. An example could be a dataset within each row an ID representing an individual, followed by 250 features measured on that individual; in the context of dimension reduction (PCA) this dataset contains 250 dimensions. Its clear that we cannot visualize 250 dimensions effectively in order to explore the dataset, at least not as in the case of a two dimensional setting (x,y) used in the previous weeks.</p>
 <p>As a dimension reduction method, PCA reduces the dimensions of the problem, 250 dimensions in our example, to a two dimensional space that can be represent in a x,y plot that we can investigate on paper (and also the flat computer screen). In doing so it tries to extract the maximal amount of information from the higher dimensional space and concentrate it in two dimensions. Information used to accomplish this takes the following statistics measures,</p>
@@ -325,8 +323,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>We shall work out these ideas in the following screencasts. The fundamentals of PCA are however, based on linear algebra which is unfortunately outside the scoop of this course. Therefore we will take a more intuitive approach in the screencasts, using the concepts introduced in the previous two weeks, the aforementioned variance and correlations.</p>
 </div>
-<div id="motivation-behind-pca" class="section level2" number="10.2">
-<h2><span class="header-section-number">10.2</span> Motivation behind PCA</h2>
+<div id="motivation-behind-pca" class="section level2 hasAnchor" number="10.2">
+<h2><span class="header-section-number">10.2</span> Motivation behind PCA<a href="pca.html#motivation-behind-pca" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This screencast explains the basic motivation behind dimensions reduction PCA. First the explanation behind the dimension reduction of a 3D object into 2D. It also addresses the meaning of the modern classification of PCA as an unsupervised machine learning methodology by comparing it with supervised machine learning.</p>
 <p>As an simple example the Iris data is used. This data set will we analyzed in more detail in another screencast.</p>
 <iframe src="https://www.youtube.com/embed/xBTy5GMUHZ8" width="672" height="400px" data-external="1">
@@ -336,8 +334,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>What is the difference between supervised and unsupervised machine learning methodologies.</li>
 </ul>
 </div>
-<div id="pca-fundamentals" class="section level2" number="10.3">
-<h2><span class="header-section-number">10.3</span> PCA fundamentals</h2>
+<div id="pca-fundamentals" class="section level2 hasAnchor" number="10.3">
+<h2><span class="header-section-number">10.3</span> PCA fundamentals<a href="pca.html#pca-fundamentals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>PCA algorithm is solidly based on linear algebra. Without going in to detail we will use a concept and two measures from linear algebra:</p>
 <ul>
 <li><strong>Orthogonality</strong>: Dimensions (variables) are independent of each other if they are Orthogonal; geometrically we would visualize that as perpendicular dimensions (axes).</li>
@@ -351,8 +349,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>How we need to interpret the loading of a variables in a principal component?</li>
 </ul>
 </div>
-<div id="pca-in-classification" class="section level2" number="10.4">
-<h2><span class="header-section-number">10.4</span> PCA in classification</h2>
+<div id="pca-in-classification" class="section level2 hasAnchor" number="10.4">
+<h2><span class="header-section-number">10.4</span> PCA in classification<a href="pca.html#pca-in-classification" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this simple example the Iris data, introduced earlier, are analyzed using PCA. Note that normally we do not have the information on which species the individuals belong to, unsupervised. The species are only used here for a didactic purpose.</p>
 <iframe src="https://www.youtube.com/embed/k-qh_xR6-gA" width="672" height="400px" data-external="1">
 </iframe>
@@ -362,8 +360,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Which feature(s) (variable(s)) is response for the separation between Versicolor and Virginica?</p></li>
 </ul>
 </div>
-<div id="pca-and-gradients" class="section level2" number="10.5">
-<h2><span class="header-section-number">10.5</span> PCA and gradients</h2>
+<div id="pca-and-gradients" class="section level2 hasAnchor" number="10.5">
+<h2><span class="header-section-number">10.5</span> PCA and gradients<a href="pca.html#pca-and-gradients" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The Heptathlon dataset give the scores, for every athlete, for the different disciplines of the woman’s Olympic Heptathlon of 1988 in Seoul. The row are the individual athletes and the columns the scores per discipline. This dataset might be interesting for the coaches to investigate if one of disciplines might contribute more to a success than another. Here we do not look in particular to clusters of groups of athletes but if the distribution of the individual athlete is related to the final score when visualizing the principal components.
 The relation with linear regression and supervised learning is also discussed.</p>
 <iframe src="https://www.youtube.com/embed/W0A4R8INP40" width="672" height="400px" data-external="1">
@@ -373,8 +371,8 @@ The relation with linear regression and supervised learning is also discussed.</
 <li>Explain in your own words which disciplines contributed to the success of Jackie Joyner-Kersee.</li>
 </ul>
 <hr />
-<div id="exercises-13" class="section level3" number="10.5.1">
-<h3><span class="header-section-number">10.5.1</span> Exercises</h3>
+<div id="exercises-13" class="section level3 hasAnchor" number="10.5.1">
+<h3><span class="header-section-number">10.5.1</span> Exercises<a href="pca.html#exercises-13" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A set of exercises can be downloaded <a href="exercises/PCA/PCA_assignment.Rmd">here</a> and its required data sets <a href="exercises/PCA/Day15.Rdata">here</a>. <br><small><em>(If you can’t knit, click <a href="exercises/PCA/PCA_assignment.pdf">here</a> for a PDF version of the exercises.)</em></small></p>
 <hr />
 <p>PCA is also covered in <a href="https://github.com/FransRodenburg/Biostatistics-Book-Series/blob/main/Elements_of_Biostatistics_Sep2020.pdf">Elements of Biostatistics</a>, chapter 4. A demonstration in R can be found in paragraph 4.4.</p>
@@ -449,7 +447,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

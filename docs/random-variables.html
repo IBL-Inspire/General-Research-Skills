@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Random Variables | General Research Skills</title>
   <meta name="description" content="Chapter 2 Random Variables | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Random Variables | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="installation-tutorial.html"/>
 <link rel="next" href="hypothesis-testing.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -148,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -309,12 +307,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="random-variables" class="section level1" number="2">
-<h1><span class="header-section-number">Chapter 2</span> Random Variables</h1>
+<div id="random-variables" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">Chapter 2</span> Random Variables<a href="random-variables.html#random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><small><i>In this chapter, the concept of a <strong>random variable</strong>, <strong>degrees of freedom</strong> and <strong>probability distributions</strong> is explained.</i></small></p>
 <hr />
-<div id="what-are-random-variables" class="section level2" number="2.1">
-<h2><span class="header-section-number">2.1</span> What are Random Variables?</h2>
+<div id="what-are-random-variables" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> What are Random Variables?<a href="random-variables.html#what-are-random-variables" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><small><i>In empirical science, we draw conclusions about some larger population, using only a limited sample. This process is called <em>inference</em>, and it draws heavily from the definition of a random variable. Though this chapter may seem somewhat abstract, it is important that you have at least some idea what a random variable is.</i></small></p>
 <hr />
 <p>In experiments, random <strong>samples</strong> are taken to extract particular properties from a <strong>population</strong> of interest; e.g. we pick randomly 20 students from the population of GRS students in 2021. We will discuss this in more detail in day 2 during the lecture on <em>Experimental Design</em>, but for now assume, as an example, that we are able to pick 20 individuals at random from the population of GRS students from Leiden.</p>
@@ -364,16 +362,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>Next we address the problem of how we can extract information from random variables. It turns out that statistics has found a way to partition a random variable in a systemic and informative part, and a random part called the error. This will introduce the concepts of degrees of freedom of the statistical model and the random stochastic error.</p>
-<div id="exercise" class="section level3" number="2.1.1">
-<h3><span class="header-section-number">2.1.1</span> Exercise</h3>
+<div id="exercise" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Exercise<a href="random-variables.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Describe random variables in your own words and give some examples of random variables.</li>
 </ul>
 <hr />
 </div>
 </div>
-<div id="degrees-of-freedom" class="section level2" number="2.2">
-<h2><span class="header-section-number">2.2</span> Degrees of Freedom</h2>
+<div id="degrees-of-freedom" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Degrees of Freedom<a href="random-variables.html#degrees-of-freedom" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><small><i>Random variables, degrees of freedom and statistical models.</i></small></p>
 <hr />
 <p>Extracting information from random variables is the main purpose of statistics. By constructing a statistical model that has a close relationship with the hypothesis to be tested (topic of tomorrow), statistics can extract information from data.</p>
@@ -398,16 +396,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 </ul>
 <p>As the data that we sample plays such a crucial role, we must take care when acquiring our data. This is the field of experimental- or study design, the topic of our next lecture tomorrow.</p>
-<div id="exercises" class="section level3" number="2.2.1">
-<h3><span class="header-section-number">2.2.1</span> Exercises</h3>
+<div id="exercises" class="section level3 hasAnchor" number="2.2.1">
+<h3><span class="header-section-number">2.2.1</span> Exercises<a href="random-variables.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Describe, in your own words, the relation between a random variable, degree of freedom and a statistical model;</li>
 <li>Do you agree that the source of vagueness relates to the quality of the data? Write down a argument in favor or against the above statement.</li>
 </ul>
 </div>
 </div>
-<div id="probability-distributions" class="section level2" number="2.3">
-<h2><span class="header-section-number">2.3</span> Probability Distributions</h2>
+<div id="probability-distributions" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Probability Distributions<a href="random-variables.html#probability-distributions" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p><small><i>A probability distribution describes the chance of different outcomes of a random variable. Also see chapter <strong><em>6</em></strong> of <a href="https://github.com/FransRodenburg/Biostatistics-Book-Series/blob/main/Introduction_to_Biostatistics_Dec2020.pdf">Introduction to Biostatistics</a>.</i></small></p>
 <hr />
 <p>What is the chance of being taller than 2 meters? Or what is the highest grade you can expect from random guessing on a multiple choice exam? These are questions that can be answered using a probability distribution. In the video below, three commonly used distributions are explained at a conceptual level. You don’t have to memorize their probability density functions or cumulative density functions for this course.</p>
@@ -421,14 +419,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>All of these distributions are only realistic <em>after</em> accounting for any large, structural differences, and not for typical data;</li>
 <li>How to account for systematic differences is what you will learn in the lectures on statistical models, particularly regression analysis.</li>
 </ul>
-<div id="exercises-1" class="section level3" number="2.3.1">
-<h3><span class="header-section-number">2.3.1</span> Exercises</h3>
+<div id="exercises-1" class="section level3 hasAnchor" number="2.3.1">
+<h3><span class="header-section-number">2.3.1</span> Exercises<a href="random-variables.html#exercises-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ul>
 <li>Why is the normal distribution a good approximation for adult male height in a given year, in a given country?</li>
 <li>Would it still be a good approximation for adults in a given country? Explain.</li>
 <li>What does it mean that for the Poisson distribution, the mean is equal to the variance?</li>
-<li>What is skew? Can the normal distribution be skewed? How about the Poisson distrubution, or the binomial distribution? Explain.</li>
+<li>What is skew? Can the normal distribution be skewed? How about the Poisson distribution, or the binomial distribution? Explain.</li>
 </ul>
+<p><strong>New</strong> (alpha version). We are trying a new concept where you can pick your own set of exercises depending on your interests as a biology student. We have four categories for you to pick from:</p>
+<ul>
+<li>A—Molecular, Cellular &amp; Medical Biology (<a href="exercises/ProbabilityDistributions/ChooseTheRightProbabilityDistribution-A.pdf">exercises</a>);</li>
+<li>B—Ecology, Evolution &amp; Behavioral Biology (<a href="exercises/ProbabilityDistributions/ChooseTheRightProbabilityDistribution-B.pdf">exercises</a>);</li>
+<li>C—Computational Biology and Bioinformatics (<a href="exercises/ProbabilityDistributions/ChooseTheRightProbabilityDistribution-C.pdf">exercises</a>);</li>
+<li>D—Education &amp; Science Communication (<a href="exercises/ProbabilityDistributions/ChooseTheRightProbabilityDistribution-D.pdf">exercises</a>).</li>
+</ul>
+<p><strong>Pick only one</strong>, download the exercises (PDF) and do the exercises.</p>
 
 </div>
 </div>
@@ -500,7 +506,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

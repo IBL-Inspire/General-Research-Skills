@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 9 ANCOVA &amp; Model Selection | General Research Skills</title>
   <meta name="description" content="Chapter 9 ANCOVA &amp; Model Selection | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 9 ANCOVA &amp; Model Selection | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="factorial-anova.html"/>
 <link rel="next" href="pca.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -148,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -309,30 +307,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="ancova-model-selection" class="section level1" number="9">
-<h1><span class="header-section-number">Chapter 9</span> ANCOVA &amp; Model Selection</h1>
+<div id="ancova-model-selection" class="section level1 hasAnchor" number="9">
+<h1><span class="header-section-number">Chapter 9</span> ANCOVA &amp; Model Selection<a href="ancova-model-selection.html#ancova-model-selection" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><small><i>ANCOVA is multiple linear regression with both <b>categorical and continuous explanatory variables</b>.</p>
 <p>Model selection is a set of <b>guidelines for choosing the right model.</b> The best model depends on what the model is intended to be used for.</i></small></p>
 <hr />
-<div id="introduction-1" class="section level2" number="9.1">
-<h2><span class="header-section-number">9.1</span> Introduction</h2>
+<div id="introduction-1" class="section level2 hasAnchor" number="9.1">
+<h2><span class="header-section-number">9.1</span> Introduction<a href="ancova-model-selection.html#introduction-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>We now turn our attention to to the case where we have at least one numerical and at least one factor as explanatory variable. These type of models we call ANCOVA or ANalysis of COVAriance and a simple example is the model <code>Y ~ F + X + F:X</code> with <code>F</code> a factor and <code>X</code> a numeric variable.</p>
 <p>Most of the ground work has been covered in the screencasts on one-way ANOVA, linear regression and factorial ANOVA. Therefore this set of screencasts on ANCOVA are more applied, following the same steps as the factorial ANOVA and the differences are emphasized where needed. Try to identify the similarities and differences between these multiple regression models.</p>
 <p>The first screencast discusses the difference between the interpretation of an ANCOVA model as compared to an factorial ANOVA model. The second screencast runs trough the analysis of the of an ANCOVA step by step.</p>
 </div>
-<div id="the-ancova-explained-by-simulations" class="section level2" number="9.2">
-<h2><span class="header-section-number">9.2</span> The ANCOVA explained by simulations</h2>
+<div id="the-ancova-explained-by-simulations" class="section level2 hasAnchor" number="9.2">
+<h2><span class="header-section-number">9.2</span> The ANCOVA explained by simulations<a href="ancova-model-selection.html#the-ancova-explained-by-simulations" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Simulations are used to explain the challenges faced when analyzing ANCOVA; when are interaction’s significant in the ANCOVA context and what does this mean. First we simulate the same model without interaction multiple times using different <code>set.seed()</code> values to the investigate the uncertainty in the estimates of the slopes. Then we simulate a model with interaction.</p>
 <iframe src="https://www.youtube.com/embed/EczzyMGFgGM" width="672" height="400px" data-external="1">
 </iframe>
 </div>
-<div id="the-analysis-of-ancova-data-step-by-step" class="section level2" number="9.3">
-<h2><span class="header-section-number">9.3</span> The analysis of ANCOVA data step by step</h2>
+<div id="the-analysis-of-ancova-data-step-by-step" class="section level2 hasAnchor" number="9.3">
+<h2><span class="header-section-number">9.3</span> The analysis of ANCOVA data step by step<a href="ancova-model-selection.html#the-analysis-of-ancova-data-step-by-step" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>An ANCOVA analysis is performed step by step follow the tutorial for ANCOVA. In this screencast the differences with a factorial ANOVA are emphasized.</p>
 <iframe src="https://www.youtube.com/embed/mRoRvT6EK90" width="672" height="400px" data-external="1">
 </iframe>
-<div id="exercises-11" class="section level3" number="9.3.1">
-<h3><span class="header-section-number">9.3.1</span> Exercises</h3>
+<div id="exercises-11" class="section level3 hasAnchor" number="9.3.1">
+<h3><span class="header-section-number">9.3.1</span> Exercises<a href="ancova-model-selection.html#exercises-11" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Below part of the output of a ANOVA analysis.</p>
 <pre><code>Residuals:
     Min      1Q  Median      3Q     Max 
@@ -362,17 +360,17 @@ F-statistic:    13 on 5 and 18 DF,  p-value: 1.892e-05</code></pre>
 </ol>
 </div>
 </div>
-<div id="model-selection-1" class="section level2" number="9.4">
-<h2><span class="header-section-number">9.4</span> Model Selection</h2>
+<div id="model-selection-1" class="section level2 hasAnchor" number="9.4">
+<h2><span class="header-section-number">9.4</span> Model Selection<a href="ancova-model-selection.html#model-selection-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <iframe src="https://www.youtube.com/embed/n2kWXqR5nnw" width="672" height="400px" data-external="1">
 </iframe>
-<div id="exercises-12" class="section level3" number="9.4.1">
-<h3><span class="header-section-number">9.4.1</span> Exercises</h3>
+<div id="exercises-12" class="section level3 hasAnchor" number="9.4.1">
+<h3><span class="header-section-number">9.4.1</span> Exercises<a href="ancova-model-selection.html#exercises-12" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A set of exercises can be downloaded <a href="exercises/ANCOVA/MultipleRegression_assignment.Rmd">here</a> and its required data set <a href="exercises/ANCOVA/fruitfly.csv">here</a>. <br><small><em>(If you can’t knit, click <a href="exercises/ANCOVA/MultipleRegression_assignment.pdf">here</a> for a PDF version of the exercises.)</em></small></p>
 <hr />
 </div>
-<div id="exercises-hard" class="section level3" number="9.4.2">
-<h3><span class="header-section-number">9.4.2</span> Exercises (hard)</h3>
+<div id="exercises-hard" class="section level3 hasAnchor" number="9.4.2">
+<h3><span class="header-section-number">9.4.2</span> Exercises (hard)<a href="ancova-model-selection.html#exercises-hard" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In order to study the effect of caviar on health, a survey is distributed in a city on whether the respondents have ever eaten caviar, and if so, how frequently they eat caviar. After receiving the responses, 100 random individuals from each of the following groups are invited for a health check-up:</p>
 <ul>
 <li>Group A: Has never consumed caviar;</li>
@@ -457,7 +455,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 8 Factorial ANOVA | General Research Skills</title>
   <meta name="description" content="Chapter 8 Factorial ANOVA | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 8 Factorial ANOVA | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="simple-linear-regression.html"/>
 <link rel="next" href="ancova-model-selection.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -148,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -309,8 +307,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="factorial-anova" class="section level1" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Factorial ANOVA</h1>
+<div id="factorial-anova" class="section level1 hasAnchor" number="8">
+<h1><span class="header-section-number">Chapter 8</span> Factorial ANOVA<a href="factorial-anova.html#factorial-anova" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><i><small>A model for comparing all <b>combinations of categorical variables</b>.</i></small></p>
 <hr />
 <p>In these set of lectures we move from models with one explanatory variable, one-way ANOVA and simple linear regression (<code>Y ~ F</code> and <code>Y ~ X</code>), to multiple regression models (e.g. <code>Y ~ F1 + F2 + F1:F2</code> or <code>Y ~ F + X + F:X</code>) with more than one explanatory variable; with <code>F</code> a factor and <code>X</code> a numerical variable. This will introduce two new aspects to our analysis:</p>
@@ -332,14 +330,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>and finally and data set representing data with interaction.</li>
 </ul>
 <p>In doing so we can investigate the different criteria for selecting the “best” model.</p>
-<div id="interaction" class="section level2" number="8.1">
-<h2><span class="header-section-number">8.1</span> Interaction</h2>
+<div id="interaction" class="section level2 hasAnchor" number="8.1">
+<h2><span class="header-section-number">8.1</span> Interaction<a href="factorial-anova.html#interaction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this screencast I argue why we might need additional degrees of freedom to analysis data with interactions between the explanatory variables. For example, <code>F1:F2</code> compound variable in <code>Y ~ F1 + F2 + F1:F2</code> can be read as that <code>F1</code> modulates the effect of <code>F2</code> on <code>Y</code> (or equivalently, the effect <code>F2</code> has on how the <code>F1</code> affects <code>Y</code>). In order to fit data with interaction, we need more degrees of freedom.</p>
 <iframe src="https://www.youtube.com/embed/jLbK98Tfs_w" width="672" height="400px" data-external="1">
 </iframe>
 </div>
-<div id="three-example-factorial-anova-data-sets" class="section level2" number="8.2">
-<h2><span class="header-section-number">8.2</span> Three example factorial ANOVA data sets</h2>
+<div id="three-example-factorial-anova-data-sets" class="section level2 hasAnchor" number="8.2">
+<h2><span class="header-section-number">8.2</span> Three example factorial ANOVA data sets<a href="factorial-anova.html#three-example-factorial-anova-data-sets" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this screencast I introduce three data sets to explain the different qualities of factorial ANOVA model:</p>
 <ul>
 <li>One data set results in a so-called <strong>null-model</strong>, a model where none of the treatment combinations affect the response variable (<span class="math inline">\(H_0\)</span>).</li>
@@ -350,21 +348,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <iframe src="https://www.youtube.com/embed/xXZW25SlnhY" width="672" height="400px" data-external="1">
 </iframe>
 </div>
-<div id="model-specification-and-diagnostics" class="section level2" number="8.3">
-<h2><span class="header-section-number">8.3</span> Model specification and diagnostics</h2>
+<div id="model-specification-and-diagnostics" class="section level2 hasAnchor" number="8.3">
+<h2><span class="header-section-number">8.3</span> Model specification and diagnostics<a href="factorial-anova.html#model-specification-and-diagnostics" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>In this screencast the model specification for the three data set are discussed together with the model diagnostics. It is shown that it follows the same steps as the one-Way ANOVA discussed in chapter 6, because we only need to analyze the behavior of the residuals of the different models, a property shared by all statistical models.</p>
 <iframe src="https://www.youtube.com/embed/MVuyHpHjFwI" width="672" height="400px" data-external="1">
 </iframe>
 </div>
-<div id="model-selection" class="section level2" number="8.4">
-<h2><span class="header-section-number">8.4</span> Model selection</h2>
+<div id="model-selection" class="section level2 hasAnchor" number="8.4">
+<h2><span class="header-section-number">8.4</span> Model selection<a href="factorial-anova.html#model-selection" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>After it was shown in the previous screencast that the data seem to adhere to the assumptions of the model, the search for the best model for each individual data set can start. The model selection procedures results in three different models for the three different data sets.</p>
 <iframe src="https://www.youtube.com/embed/A0zkpkYdLf8" width="672" height="400px" data-external="1">
 </iframe>
 <p>In one of <a href="https://youtu.be/n2kWXqR5nnw">the screencast of Wednesday</a> we will go into more detail of model selection.</p>
 </div>
-<div id="some-final-thoughts-and-visualisation" class="section level2" number="8.5">
-<h2><span class="header-section-number">8.5</span> Some final thoughts and visualisation</h2>
+<div id="some-final-thoughts-and-visualisation" class="section level2 hasAnchor" number="8.5">
+<h2><span class="header-section-number">8.5</span> Some final thoughts and visualisation<a href="factorial-anova.html#some-final-thoughts-and-visualisation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Here we will look what the effect can be on the model diagnostics plots when the factorial ANOVA model is miss-specified; e.g. when one term (or degree of freedom) is missing. Also some data visualizations of factorial ANOVA are briefly discussed.</p>
 <iframe src="https://www.youtube.com/embed/oVL18FPFBo8" width="672" height="400px" data-external="1">
 </iframe>
@@ -438,7 +436,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');

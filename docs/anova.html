@@ -6,11 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 6 ANOVA | General Research Skills</title>
   <meta name="description" content="Chapter 6 ANOVA | General Research Skills" />
-  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.32 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 6 ANOVA | General Research Skills" />
   <meta property="og:type" content="book" />
-  
   
   
   
@@ -32,7 +31,6 @@
   
 <link rel="prev" href="study-design.html"/>
 <link rel="next" href="simple-linear-regression.html"/>
-<script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -50,8 +48,9 @@
 
 
 
-<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 <script src="libs/kePrint-0.0.1/kePrint.js"></script>
 <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
 <link href="libs/bsTable-3.3.7/bootstrapTable.min.css" rel="stylesheet" />
@@ -96,7 +95,7 @@ code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -109,7 +108,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -148,8 +147,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ul>
 <li class="chapter" data-level="1.1" data-path="installation-tutorial.html"><a href="installation-tutorial.html#installation-guide"><i class="fa fa-check"></i><b>1.1</b> Installation Guide</a>
 <ul>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-tinytex"><i class="fa fa-check"></i>Note about TinyTeX</a></li>
-<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems-in-general"><i class="fa fa-check"></i>Note about installation problems in general</a></li>
+<li class="chapter" data-level="" data-path="installation-tutorial.html"><a href="installation-tutorial.html#note-about-installation-problems"><i class="fa fa-check"></i>Note about installation problems</a></li>
 </ul></li>
 <li class="chapter" data-level="1.2" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-rstudio-r-markdown"><i class="fa fa-check"></i><b>1.2</b> About RStudio &amp; R Markdown</a></li>
 <li class="chapter" data-level="1.3" data-path="installation-tutorial.html"><a href="installation-tutorial.html#about-the-r-language"><i class="fa fa-check"></i><b>1.3</b> About the R Language</a></li>
@@ -309,17 +307,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anova" class="section level1" number="6">
-<h1><span class="header-section-number">Chapter 6</span> ANOVA</h1>
+<div id="anova" class="section level1 hasAnchor" number="6">
+<h1><span class="header-section-number">Chapter 6</span> ANOVA<a href="anova.html#anova" class="anchor-section" aria-label="Anchor link to header"></a></h1>
 <p><small><i>Analysis of variance (ANOVA) is a model for <b>comparing any number of group means</b>. The observations are assumed to be <b>independent</b>, deviations from the group means are assumed to follow a <b>normal distribution</b>, and group <b>variances are assumed to be equal</b>.</i></small></p>
 <hr />
-<div id="overview" class="section level2" number="6.1">
-<h2><span class="header-section-number">6.1</span> Overview</h2>
+<div id="overview" class="section level2 hasAnchor" number="6.1">
+<h2><span class="header-section-number">6.1</span> Overview<a href="anova.html#overview" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Watch part 1 of the ANOVA lecture and answer the questions below.</p>
 <iframe src="https://www.youtube.com/embed/BFB4o4uBgPs" width="672" height="400px" data-external="1">
 </iframe>
-<div id="summary-of-the-example-in-the-video" class="section level3 unnumbered">
-<h3>Summary of the example in the video</h3>
+<div id="summary-of-the-example-in-the-video" class="section level3 unnumbered hasAnchor">
+<h3>Summary of the example in the video<a href="anova.html#summary-of-the-example-in-the-video" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Here is a summary if you want to reproduce the example analysis:</p>
 <p>1. Enter the data:</p>
 <div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="anova.html#cb8-1" aria-hidden="true" tabindex="-1"></a>SBP       <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">121</span>, <span class="dv">122</span>, <span class="dv">114</span>, <span class="dv">124</span>, <span class="dv">118</span>, <span class="dv">127</span>, <span class="co"># thiazide</span></span>
@@ -346,8 +344,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb13-2"><a href="anova.html#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(posthoc)</span>
 <span id="cb13-3"><a href="anova.html#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(posthoc)</span></code></pre></div>
 </div>
-<div id="exercises-6" class="section level3" number="6.1.1">
-<h3><span class="header-section-number">6.1.1</span> Exercises</h3>
+<div id="exercises-6" class="section level3 hasAnchor" number="6.1.1">
+<h3><span class="header-section-number">6.1.1</span> Exercises<a href="anova.html#exercises-6" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="figures/PlantGrowth.png" width="100%" /></p>
 <ol style="list-style-type: decimal">
 <li>The <code>PlantGrowth</code> data set is included with the default installation of R. It contains <span class="math inline">\(30\)</span> independent measurements of dry weight from plants subjected to three types of treatment. You can view it by running <code>View(PlantGrowth)</code> in the console, or you can see the structure of the data and produce a summary of the data like this:</li>
@@ -375,13 +373,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <hr />
 </div>
 </div>
-<div id="how-does-anova-work" class="section level2" number="6.2">
-<h2><span class="header-section-number">6.2</span> How does ANOVA work?</h2>
+<div id="how-does-anova-work" class="section level2 hasAnchor" number="6.2">
+<h2><span class="header-section-number">6.2</span> How does ANOVA work?<a href="anova.html#how-does-anova-work" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Watch part 2 of the ANOVA lecture and answer the questions below.</p>
 <iframe src="https://www.youtube.com/embed/87ECInQIY9k" width="672" height="400px" data-external="1">
 </iframe>
-<div id="exercises-7" class="section level3" number="6.2.1">
-<h3><span class="header-section-number">6.2.1</span> Exercises</h3>
+<div id="exercises-7" class="section level3 hasAnchor" number="6.2.1">
+<h3><span class="header-section-number">6.2.1</span> Exercises<a href="anova.html#exercises-7" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <ol style="list-style-type: decimal">
 <li>Are the following statements <b>true</b> or <b>false</b>?</li>
 </ol>
@@ -420,13 +418,13 @@ Residuals   48   5745     y                       </code></pre>
 <hr />
 </div>
 </div>
-<div id="two-way-multi-way-interaction" class="section level2" number="6.3">
-<h2><span class="header-section-number">6.3</span> Two-Way, Multi-Way &amp; Interaction</h2>
+<div id="two-way-multi-way-interaction" class="section level2 hasAnchor" number="6.3">
+<h2><span class="header-section-number">6.3</span> Two-Way, Multi-Way &amp; Interaction<a href="anova.html#two-way-multi-way-interaction" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Watch part 3 of the ANOVA lecture and answer the questions below.</p>
 <iframe src="https://www.youtube.com/embed/kNPl8Vo8Jlk" width="672" height="400px" data-external="1">
 </iframe>
-<div id="exercises-8" class="section level3" number="6.3.1">
-<h3><span class="header-section-number">6.3.1</span> Exercises</h3>
+<div id="exercises-8" class="section level3 hasAnchor" number="6.3.1">
+<h3><span class="header-section-number">6.3.1</span> Exercises<a href="anova.html#exercises-8" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In an experiment on rats, a researcher wanted to find out what the effect would be of the genotype of the biological mother and the foster mother on the growth of the rats.<a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a> <span class="math inline">\(61\)</span> rat litters were taken from their biological mother and placed with a foster mother. See the figure below.</p>
 <p><img src="General-Research-Skills_files/figure-html/unnamed-chunk-41-1.png" width="672" /></p>
 <ol style="list-style-type: decimal">
@@ -441,8 +439,8 @@ Residuals   48   5745     y                       </code></pre>
 <li>(hard) Search online for the definition of the <a href="http://www.google.com/search?q=central+limit+theorem">central limit theorem</a>. Is normality of the residuals a reasonable assumption for this study from a theoretical point of view? <small><em>(HINT: Look at the help page for the <code>genotype</code> data set and read the description of the outcome variable.)</em></small></li>
 </ol>
 </div>
-<div id="additional-exercises" class="section level3" number="6.3.2">
-<h3><span class="header-section-number">6.3.2</span> Additional Exercises (*)</h3>
+<div id="additional-exercises" class="section level3 hasAnchor" number="6.3.2">
+<h3><span class="header-section-number">6.3.2</span> Additional Exercises (*)<a href="anova.html#additional-exercises" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><img src="figures/Iris.png" width="100%" /></p>
 <ol style="list-style-type: decimal">
 <li><p>The <code>iris</code> data set is included with the default installation of R. It contains <span class="math inline">\(150\)</span> independent measurements of sepal and petal dimensions from three types of <em>Iris</em> species. Choose one of: <code>Sepal.Length</code>, <code>Petal.Length</code>, <code>Sepal.Width</code> and <code>Petal.Width</code> and perform a complete analysis to find out whether species differ on average.</p></li>
@@ -457,8 +455,8 @@ Residuals   48   5745     y                       </code></pre>
 </ul>
 </div>
 </div>
-<div id="where-is-part-4" class="section level2" number="6.4">
-<h2><span class="header-section-number">6.4</span> Where is part 4? (*)</h2>
+<div id="where-is-part-4" class="section level2 hasAnchor" number="6.4">
+<h2><span class="header-section-number">6.4</span> Where is part 4? (*)<a href="anova.html#where-is-part-4" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>When you use two- or multi-way ANOVA, Tukey’s Honest Significant Difference only corrects for the categories <em>within</em> each explanatory variable. This quickly becomes problematic: If you’ll recall from the multiple testing lecture, with <span class="math inline">\(\alpha = 0.05\)</span>, with as little as three explanatory variables, you will already have a chance of <span class="math inline">\(1 - (1 - 0.05)^3 \approx 14.3\%\)</span> chance of at least one false positive among all comparisons.</p>
 <p>In order to correct for this, you would need to somehow obtain uncorrected <span class="math inline">\(p\)</span>-values from <code>TukeyHSD</code> and then perform multiple testing correction for the total number of comparisons. This is unfortunately not very easy to do, so <b>Dr. van Mil and I decided that it would not be part of the GRS course</b>.</p>
 <p>We will include this in the Advanced Statistics course for master students. If you are interested, or need this for your internship, please have a look at the <a href="https://cran.r-project.org/web/packages/emmeans/index.html">vignettes of the <code>emmeans</code> package</a>, or wait for me to release part 4 after the course. What a vignette is, is covered in the <a href="https://youtu.be/nTvdC91EyDI?t=120">video on help files</a>.</p>
@@ -539,7 +537,7 @@ gitbook.start({
     var script = document.createElement("script");
     script.type = "text/javascript";
     var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
     if (location.protocol !== "file:")
       if (/^https?:/.test(src))
         src = src.replace(/^https?:/, '');
